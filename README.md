@@ -3,7 +3,7 @@
 <a href="https://github.com/vivekyad4v?tab=followers"><img align="right" width="280" height="220" src="https://github.com/vivekyad4v/public-images/raw/master/terraform/hashicorp-terraform.png" /></a>
 
 # Terrafic Terraform
-Terraform is an infrastructure as code software by HashiCorp. It allows users to define a datacenter infrastructure in a high-level configuration language, from which it can create an execution plan to build the infrastructure such as OpenStack, IBM Cloud, AWS, Microsoft Azure or Google Cloud Platform. Infrastructure is defined in a HCL Terraform syntax or JSON format. 
+Terraform is an infrastructure as code software by HashiCorp. It allows users to define a datacenter infrastructure in a high-level configuration language, from which it can create an execution plan to build the infrastructure such as OpenStack, IBM Cloud, AWS, Microsoft Azure or Google Cloud Platform. Infrastructure is defined in a HCL Terraform syntax or JSON format.     
 Source - Wikipedia
 
 1. ### [Terraform-for-beginners-l1](https://github.com/vivekyad4v/terraform/tree/master/terraform-basics-l1 "Heading link")
