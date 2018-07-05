@@ -1,5 +1,5 @@
 resource "aws_lb" "alb" {
-  name               = "${var.environ}-neworg-alb"
+  name               = "${var.environ}-${var.orgname}-alb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = ["${aws_security_group.sg_alb.id}"]
@@ -8,12 +8,12 @@ resource "aws_lb" "alb" {
   enable_deletion_protection = false
 
   tags {
-    Name = "${var.environ}_neworg_alb"
+    Name = "${var.environ}_${var.orgname}_alb"
   }
 }
 
 resource "aws_lb_target_group" "alb_tg" {
-  name      = "${var.environ}_neworg_tg"
+  name      = "${var.environ}-${var.orgname}-tg"
   port      = "80"
   protocol  = "HTTP"
   vpc_id    = "${aws_vpc.org_vpc.id}"
@@ -27,7 +27,7 @@ resource "aws_lb_target_group" "alb_tg" {
     matcher             = "200-499"
     }
   tags {
-    Name = "${var.environ}_neworg_tg"
+    Name = "${var.environ}_${var.orgname}_tg"
   }
 }
 

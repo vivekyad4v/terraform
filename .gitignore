@@ -3,7 +3,7 @@ terraform
 *.tfstate*
 terraform-plan*
 .DS_Store
-
+*terraform-plan-key*
 # C extensions
 *.so
 

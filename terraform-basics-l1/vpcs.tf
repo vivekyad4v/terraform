@@ -3,7 +3,7 @@ resource "aws_vpc" "org_vpc" {
   enable_dns_hostnames = true
 
   tags {
-    Name = "${var.environ}_neworg_vpc"
+    Name = "${var.environ}_${var.orgname}_vpc"
   }
 }
 
@@ -13,7 +13,7 @@ resource "aws_subnet" "private_subnet_1" {
   availability_zone = "${var.aws_region}a"
 
   tags {
-    Name = "${var.environ}_neworg_pvtsub_1"
+    Name = "${var.environ}_${var.orgname}_pvtsub_1"
   }
 }
 
@@ -23,7 +23,7 @@ resource "aws_subnet" "private_subnet_2" {
   availability_zone = "${var.aws_region}b"
 
   tags {
-    Name = "${var.environ}_neworg_pvtsub_2"
+    Name = "${var.environ}_${var.orgname}_pvtsub_2"
   }
 }
 
@@ -33,7 +33,7 @@ resource "aws_subnet" "private_subnet_3" {
   availability_zone = "${var.aws_region}c"
 
   tags {
-    Name = "${var.environ}_neworg_pvtsub_3"
+    Name = "${var.environ}_${var.orgname}_pvtsub_3"
   }
 }
 
@@ -44,7 +44,7 @@ resource "aws_subnet" "public_subnet_1" {
   map_public_ip_on_launch = true
 
   tags {
-    Name = "${var.environ}_neworg_pubsub_1"
+    Name = "${var.environ}_${var.orgname}_pubsub_1"
   }
 }
 
@@ -55,7 +55,7 @@ resource "aws_subnet" "public_subnet_2" {
   map_public_ip_on_launch = true
 
   tags {
-    Name = "${var.environ}_neworg_pubsub_2"
+    Name = "${var.environ}_${var.orgname}_pubsub_2"
   }
 }
 
@@ -65,7 +65,7 @@ resource "aws_subnet" "public_subnet_3" {
   availability_zone = "${var.aws_region}c"
   map_public_ip_on_launch = true
   tags {
-    Name = "${var.environ}-neworg-pubsub-3"
+    Name = "${var.environ}-${var.orgname}-pubsub-3"
   }
 }
 
@@ -73,7 +73,7 @@ resource "aws_internet_gateway" "igw" {
   vpc_id = "${aws_vpc.org_vpc.id}"
 
   tags {
-    Name = "${var.environ}_neworg_igw"
+    Name = "${var.environ}_${var.orgname}_igw"
   }
 }
 
@@ -86,7 +86,7 @@ resource "aws_route_table" "public_rt" {
   }
 
   tags {
-    Name = "${var.environ}_neworg_public_rt"
+    Name = "${var.environ}_${var.orgname}_public_rt"
   }
 }
 
@@ -108,7 +108,7 @@ resource "aws_route_table_association" "public_rt_3" {
 resource "aws_eip" "ngw_eip" {
   vpc = true
   tags {
-    Name = "${var.environ}_neworg_ngw_eip"
+    Name = "${var.environ}_${var.orgname}_ngw_eip"
   }
 }
 
@@ -117,7 +117,7 @@ resource "aws_nat_gateway" "ngw" {
   subnet_id     = "${aws_subnet.public_subnet_1.id}"
 
   tags {
-    Name = "${var.environ}_neworg_ngw"
+    Name = "${var.environ}_${var.orgname}_ngw"
   }
 }
 
@@ -130,7 +130,7 @@ resource "aws_route_table" "private_rt" {
   }
 
   tags {
-    Name = "${var.environ}_neworg_private_rt"
+    Name = "${var.environ}_${var.orgname}_private_rt"
   }
 }
 

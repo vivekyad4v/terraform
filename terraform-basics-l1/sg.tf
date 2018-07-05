@@ -1,5 +1,5 @@
 resource "aws_security_group" "sg_alb" {
-  name        = "${var.environ}_neworg_alb"
+  name        = "${var.environ}_${var.orgname}_alb"
   description = "Allow ELB ports"
   vpc_id      = "${aws_vpc.org_vpc.id}"
   ingress {
@@ -21,13 +21,13 @@ resource "aws_security_group" "sg_alb" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags {
-    Name = "${var.environ}_neworg_alb"
+    Name = "${var.environ}_${var.orgname}_alb"
   }
 }
 
 resource "aws_security_group" "sg_ec2" {
-  name        = "${var.environ}_neworg_ec2"
-  description = "${var.environ}_neworg_ec2"
+  name        = "${var.environ}_${var.orgname}_ec2"
+  description = "${var.environ}_${var.orgname}_ec2"
   vpc_id      = "${aws_vpc.org_vpc.id}"
   ingress {
     from_port   = 22
@@ -48,13 +48,13 @@ resource "aws_security_group" "sg_ec2" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags {
-    Name = "${var.environ}_neworg_ec2"
+    Name = "${var.environ}_${var.orgname}_ec2"
   }
 }
 
 resource "aws_security_group" "sg_bastion" {
-  name        = "${var.environ}_neworg_bastion"
-  description = "${var.environ}_neworg_bastion"
+  name        = "${var.environ}_${var.orgname}_bastion"
+  description = "${var.environ}_${var.orgname}_bastion"
   vpc_id      = "${aws_vpc.org_vpc.id}"
   ingress {
     from_port   = 22
@@ -69,12 +69,12 @@ resource "aws_security_group" "sg_bastion" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags {
-    Name = "${var.environ}_neworg_bastion"
+    Name = "${var.environ}_${var.orgname}_bastion"
   }
 }
 
 resource "aws_security_group" "sg_db" {
-  name        = "${var.environ}_neworg_db"
+  name        = "${var.environ}_${var.orgname}_db"
   description = "Allow DB ports inbound from EC2"
   vpc_id      = "${aws_vpc.org_vpc.id}"
   ingress {
@@ -96,7 +96,7 @@ resource "aws_security_group" "sg_db" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   tags {
-    Name = "${var.environ}_neworg_db"
+    Name = "${var.environ}_${var.orgname}_db"
   }
 }
 
