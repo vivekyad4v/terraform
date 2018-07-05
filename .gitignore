@@ -2,6 +2,7 @@ terraform
 .terraform/
 *.tfstate*
 terraform-plan*
+.DS_Store
 
 # C extensions
 *.so
