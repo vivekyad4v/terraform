@@ -1,6 +1,6 @@
 [![LinkedIn](https://github.com/vivekyad4v/public-images/raw/master/generic/LinkedIn-vivekyad4v.png)](https://www.linkedin.com/in/vivekyad4v/)
 
-<a href="https://github.com/vivekyad4v?tab=followers"><img align="right" width="280" height="220" src="https://github.com/vivekyad4v/public-images/raw/master/hashicorp-terraform.png" /></a>
+<a href="https://github.com/vivekyad4v?tab=followers"><img align="right" width="280" height="220" src="https://github.com/vivekyad4v/public-images/raw/master/terraform/hashicorp-terraform.png" /></a>
 
 # Terrafic Terraform
 
