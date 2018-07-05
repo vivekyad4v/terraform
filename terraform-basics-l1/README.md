@@ -34,6 +34,8 @@ export AWS_DEFAULT_REGION=us-east-1
 ```sh
 ./terraform init
 ```
+## Change variables "orgname" & "environ" in `variables.tf` as per your requirement.
+
 ### Plan (shows execution plan) - 
 ```sh
 ./terraform plan -out terraform-plan-key
