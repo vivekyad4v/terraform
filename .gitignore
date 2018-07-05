@@ -1,11 +1,15 @@
+terraform
+.terraform/
+*.tfstate*
+terraform-plan*
+
+# C extensions
+*.so
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-
-terraform
-# C extensions
-*.so
 
 # Distribution / packaging
 .Python
