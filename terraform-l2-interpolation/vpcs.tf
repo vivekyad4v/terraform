@@ -21,6 +21,7 @@ resource "aws_subnet" "public_subnet" {
   vpc_id            = "${aws_vpc.myvpc.id}"
   cidr_block        = "${var.public_subnets[count.index]}"
   availability_zone = "${element(var.azs, count.index)}"
+  map_public_ip_on_launch = "true"
 
   tags = "${merge(map("Name", format("%s-%s-pub-%s", var.orgname, var.environ, element(var.azs, count.index))), var.tags)}"
 }

@@ -1,19 +1,23 @@
 data "aws_subnet" "public" {
-  vpc_id = "${aws_vpc.myvpc.id}"
   count = "${length(var.azs)}"
+
+  vpc_id = "${aws_vpc.myvpc.id}"
 
   tags {
     Name = "${var.orgname}-${var.environ}-pub-${element(var.azs, count.index)}"
   }
+  depends_on = ["aws_subnet.public_subnet"]
 }
 
 data "aws_subnet" "private" {
-  vpc_id = "${aws_vpc.myvpc.id}"
   count = "${length(var.azs)}"
+
+  vpc_id = "${aws_vpc.myvpc.id}"
 
   tags {
     Name = "${var.orgname}-${var.environ}-pvt-${element(var.azs, count.index)}"
   }
+  depends_on = ["aws_subnet.private_subnet"]
 }
 
 resource "aws_key_pair" "ec2_kp" {
@@ -22,6 +26,7 @@ resource "aws_key_pair" "ec2_kp" {
 }
 
 resource "aws_launch_template" "lc_ec2" {
+  name = "${var.orgname}-${var.environ}-lc-ec2"
   image_id = "${var.ami_id}"
   instance_type = "${var.app_instance_type}"
   key_name = "${var.orgname}_${var.environ}_kp"
@@ -30,7 +35,7 @@ resource "aws_launch_template" "lc_ec2" {
   block_device_mappings {
     device_name = "/dev/xvdv"
     ebs {
-      volume_size = 20
+      volume_size = 15
     }
   }
   iam_instance_profile {
@@ -53,6 +58,7 @@ resource "aws_launch_template" "lc_ec2" {
 
 
 resource "aws_launch_template" "lc_bastion" {
+  name = "${var.orgname}-${var.environ}-lc-bastion"
   image_id = "${var.ami_id}"
   instance_type = "${var.bastion_instance_type}"
   key_name = "${var.orgname}_${var.environ}_kp"
