@@ -28,7 +28,7 @@ resource "aws_iam_policy_attachment" "ec2_attach" {
 }
 
 resource "aws_iam_instance_profile" "ec2_profile" {
-  name  = "${var.orgname}_${var.environ}_profile"
+  name  = "${var.orgname}_${var.environ}_role"
   role = "${aws_iam_role.ec2_role.name}"
 }
 

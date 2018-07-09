@@ -8,7 +8,13 @@ ami_id                 = "ami-759bc50a"
 pub_key_path	       = "id_rsa.pub"
 bastion_instance_type  = "t2.micro"
 app_instance_type      = "t2.micro"
-#userdata               = ""
+
+userdata               = <<EOF
+#!/usr/bin/env bash
+apt-get update -y && apt-get install apache2 -y
+echo "Your second terraform setup, using most of interpolation. Cheers!!" > /var/www/html/index.html
+EOF
+
 
 tags = {
     ID          = "demo"

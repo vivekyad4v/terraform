@@ -6,7 +6,7 @@ terraform-plan*
 *terraform-plan-key*
 # C extensions
 *.so
-
+key
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -25,7 +25,7 @@ variable "pub_key_path" {
 
 variable "userdata" {
   description = "User Data"
-  default = "#!/usr/bin/env bash\n\t      apt-get update -y && apt-get install apache2 -y \n              echo \"Your first terraform setup\" > /var/www/html/index.html\n"
+  default = "#!/usr/bin/env bash\n\t      apt-get update -y && apt-get install apache2 -y \n              echo \"Your second terraform setup, using most of interpolation. Cheers!!\" > /var/www/html/index.html\n"
 }
 
 variable "bastion_instance_type" {

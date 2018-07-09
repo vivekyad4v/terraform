@@ -14,6 +14,7 @@ resource "aws_launch_template" "lc_ec2" {
     device_name = "/dev/xvdv"
     ebs {
       volume_size = 20
+      delete_on_termination = true
     }
   }
   iam_instance_profile {
@@ -44,6 +45,7 @@ resource "aws_launch_template" "lc_bastion" {
     device_name = "/dev/xvdw"
     ebs {
       volume_size = 8
+      delete_on_termination = true
     }
   }
   lifecycle {

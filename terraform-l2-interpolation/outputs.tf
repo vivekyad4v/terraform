@@ -27,3 +27,4 @@ output "ngw_eip" {
   value       = "${aws_eip.ngw_eip.public_ip}"
 }
 
+
