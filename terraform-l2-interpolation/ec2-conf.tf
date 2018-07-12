@@ -115,6 +115,7 @@ resource "aws_autoscaling_group" "asg_bastion" {
     create_before_destroy = true
     }
 
+    tags = ["${data.null_data_source.tags.*.outputs}"]
     tags = [
       {
       key                 = "Name"
