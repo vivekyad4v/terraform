@@ -32,7 +32,7 @@ export AWS_DEFAULT_REGION=us-east-1
 ```
 ### Initialize terraform - 
 ```sh
-cd terraform-basics-l1  # Goto basic-l1 directory
+cd terraform-l1-basics  # Goto basic-l1 directory
 ../terraform init
 ```
 ## Change variables "orgname" & "environ" in `variables.tf` as per your requirement.
