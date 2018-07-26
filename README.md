@@ -13,3 +13,11 @@ Source - Wikipedia
    * Create Target group & Application load balancer.
    * Create security groups for Application, ALB, Bastion & Databse instance.
 
+2. ### [Terraform-interpolation-l2 (more variables | Less code | Re-use resources | Get outputs)](https://github.com/vivekyad4v/terraform/tree/master/terraform-l2-interpolation "Heading link")
+   * Create VPC with 3 public & private subnets spanned across 3 AZs with internet & NAT Gateway.
+   * Create IAM policies, roles & instance profiles.
+   * Create Autoscaling groups, Launch templates & SSH Key pairs for Application & Bastion host.
+   * Create Target group & Application load balancer.
+   * Create security groups for Application, ALB, Bastion & Databse instance.
+   * Rolling deployments with ASG & LC.
+
