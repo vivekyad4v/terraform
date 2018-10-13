@@ -1,0 +1,6 @@
+---
+# handlers file for node
+
+- name: restart selenium node
+  service: name=selenium-node state=restarted
+

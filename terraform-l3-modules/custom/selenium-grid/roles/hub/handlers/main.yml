@@ -1,0 +1,6 @@
+---
+# handlers file for hub
+
+- name: restart selenium hub 
+  service: name=selenium-hub state=restarted
+

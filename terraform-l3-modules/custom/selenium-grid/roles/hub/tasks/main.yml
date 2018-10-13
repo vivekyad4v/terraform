@@ -1,0 +1,23 @@
+---
+# tasks file for hub
+
+- name: Copy selenium config files
+  copy:
+    src: "selenium-hub.conf"
+    dest: /etc/init.d/selenium-hub
+    mode: 0775
+  notify: restart selenium hub
+
+- name: Turn service ON                                                                      
+  shell: /sbin/chkconfig selenium-hub on
+
+- name: restart hub
+  service:
+    name: selenium-hub
+    state: started
+
+- name: Enable service selenium-hub
+  service:
+    name: selenium-hub
+    enabled: yes
+

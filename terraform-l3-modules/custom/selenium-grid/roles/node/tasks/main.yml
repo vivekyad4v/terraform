@@ -1,0 +1,28 @@
+---
+# tasks file for node
+
+- name     : template remote hosts
+  template :
+    src   : "selenium-node.conf"
+    dest  : /etc/init.d/selenium-node
+  notify: restart selenium node
+
+- name     : Rendered template
+  vars:
+    tempvar : "{{ lookup('template', '../templates/selenium-node.conf') }}"
+  debug:
+    msg: "Rendered template is {{ tempvar }}"
+
+- name: Turn service ON
+  shell: /sbin/chkconfig selenium-node on || true
+
+- name: restart node 
+  service:
+    name: selenium-node
+    state: started
+
+- name: Enable service selenium-node
+  service:
+    name: selenium-node
+    enabled: yes
+

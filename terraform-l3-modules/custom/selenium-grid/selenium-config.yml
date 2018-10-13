@@ -1,0 +1,29 @@
+---
+- hosts: localhost
+  connection: local
+  tasks:
+    - name: Get HUB_HOST IP
+      shell: TF_STATE=.terraform/local.tfstate ../../../terraform-inventory -list | jq -r '.role_hub[]'
+      register: HUB_HOST
+    - name: Set variable
+      set_fact: hub_host="{{HUB_HOST.stdout}}"
+    - debug: msg="{{ hostvars['localhost']['hub_host'] }}"
+
+- hosts: role_hub:role_node
+  remote_user: ec2-user
+  become: yes
+  roles:
+     - common
+
+- hosts: role_hub
+  remote_user: ec2-user
+  become: yes
+  roles:
+     - hub
+
+- hosts: role_node
+  remote_user: ec2-user
+  become: yes
+  roles:
+     - node
+

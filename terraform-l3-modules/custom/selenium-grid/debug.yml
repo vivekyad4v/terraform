@@ -1,0 +1,12 @@
+---
+- hosts: role_hub
+  remote_user: ec2-user
+  become: yes
+  vars:
+    some_var: "{{ lookup('template', 'roles/node/templates/selenium-node.conf') }}"
+  tasks:
+    - debug:
+        msg: "motd value is {{ some_var }}"
+    - debug: var=ansible_all_ipv4_addresses
+    - debug: var=ansible_default_ipv4.address
+

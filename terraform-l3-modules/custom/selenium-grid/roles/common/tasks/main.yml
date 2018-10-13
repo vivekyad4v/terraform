@@ -1,0 +1,74 @@
+---
+# tasks file for common
+
+- name: install Packages
+  yum: pkg={{item}} state=installed update_cache=true
+  with_items:
+    - java-1.8.0-openjdk-devel
+    - php
+    - Xvfb
+    - libXfont
+    - Xorg
+    - wget
+    - telnet
+    - nano
+
+- name: Install X Window System
+  yum:
+    name: "@X Window System"
+    state: present
+
+- name: Install Fonts
+  yum:
+    name: "@Fonts"
+    state: present
+
+- name: Install GPD
+  yum:
+    name: "@General Purpose Desktop"
+    state: present
+
+- name: Create Selenium directory
+  file: path=/opt/selenium state=directory
+
+- name: download selenium jar
+  get_url:
+    url: http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-{{ selenium_version | default('3.5.0') }}.jar
+    dest: /opt/selenium/{{ selenium_version | default('3.5.0') }}.jar
+    mode: 0775
+
+- name: Enable firewalld
+  service: name=firewalld state=started enabled=yes
+
+- name: open port 80
+  firewalld:
+      service: http 
+      zone: public
+      immediate: yes 
+      permanent: true
+      state: enabled
+
+- name: open port 4455
+  firewalld:
+      port: 4455/tcp
+      zone: public
+      immediate: yes 
+      permanent: true
+      state: enabled
+
+- name: open port 5555
+  firewalld:
+      port: 4455/tcp
+      zone: public
+      immediate: yes 
+      permanent: true
+      state: enabled
+
+
+
+
+
+
+
+
+
